@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+  
+      <ion-title>
+        Home
+      </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content text-center>
+  <br>
+  <img width="300" src="../assets/imta.jpg">
+  <h1>
+    Conference
+  </h1>
+  <h2>{{beginingDate}} - {{endingDate}} </h2>
+  <button ion-button full (click)="goToSessionList()">Voir les sessions</button>
+  <button ion-button full>Voir les présentateurs</button>
+</ion-content>
