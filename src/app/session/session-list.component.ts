@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DevfestService } from "../devfest.service";
+import { DevfestHttpService } from "../shared/devfest-http.service";
 import { NavController } from 'ionic-angular';
 
 import { SessionDetailComponent } from "./session-detail.component";
@@ -13,11 +13,11 @@ export class SessionListComponent implements OnInit {
 
     sessions: any;
 
-    constructor(private devfestService: DevfestService,
+    constructor(private devfestHttpService: DevfestHttpService,
                 private nav: NavController) { }
 
     ngOnInit() {
-        this.devfestService.getSessions()
+        this.devfestHttpService.getSessions()
             .then((response) => {
                 if (!response.ok) throw Error(response.statusText);
                 return response.json();

@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+  
+      <ion-title>
+        My note
+      </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content text-center>
+  <h1>
+    {{session?.title}}
+  </h1>
+  <img center width="300" src="{{image}}" (click)="getPicture()">  
+  <ion-textarea placeholder="Enter a note" type="text" [(ngModel)]="comment"></ion-textarea>
+  <button ion-button full (click)="save()">Save</button>
+</ion-content>

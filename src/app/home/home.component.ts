@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { SessionListComponent } from '../session/session-list.component';
+import { NoteListComponent } from '../note/note-list.component';
 
 @Component({
   selector: 'app-home',
@@ -23,4 +24,7 @@ export class HomeComponent implements OnInit {
     this.nav.push(SessionListComponent);    
   }
 
+  goToNoteList() {
+    this.nav.push(NoteListComponent);    
+  }
 }

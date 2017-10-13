@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+        My Notes
+      </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+        <button ion-item *ngFor="let note of notes">
+            <ion-avatar item-start>
+                <img src="{{note.image}}">
+            </ion-avatar>
+            {{ note.comment }}
+        </button>  
+    </ion-list>
+</ion-content>

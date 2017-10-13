@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class DevfestService {
+export class DevfestHttpService {
 
     private BASE_URL =  "https://raw.githubusercontent.com/DevInstitut/conference-data/master/";
 
