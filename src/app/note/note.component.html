@@ -14,7 +14,7 @@
     {{session?.title}}
   </h1>
   <ion-grid>
-    <ion-row justify-content-center>
+    <ion-row *ngIf="creatingState" justify-content-center>
         <button ion-button icon-only (click)="takeAPhoto()">
             <ion-icon name="camera"></ion-icon>
           </button>
@@ -23,11 +23,11 @@
           </button>
     </ion-row>
     <ion-row justify-content-center>
-        <img center width="300" src="{{image}}" (click)="actionSheetOnImage()">  
+        <img center width="300" height="300" src="{{image}}" (click)="actionSheetOnImage()">  
     </ion-row>
     <ion-row>
         <ion-textarea placeholder="Enter a note" type="text" [(ngModel)]="comment"></ion-textarea>
-        <button ion-button full (click)="save()">Save</button>
+        <button *ngIf="creatingState" ion-button full (click)="save()">Save</button>
     </ion-row>
   </ion-grid>
 </ion-content>

@@ -6,6 +6,8 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 import { DevfestDbService } from '../shared/devfest-db.service';
 
+import { NoteComponent } from '../note/note.component';
+
 @Component({
   templateUrl: 'note-list.component.html'
 })
@@ -31,6 +33,10 @@ export class NoteListComponent implements OnInit {
     this.dfDbService.getAllNotes().then(notes => {
       this.notes = notes;
     })
+  }
+
+  goToNote(note) {
+      this.nav.push(NoteComponent, {note: note});    
   }
 
 }

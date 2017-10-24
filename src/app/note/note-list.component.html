@@ -10,7 +10,7 @@
 </ion-header>
 <ion-content>
     <ion-list>
-        <button ion-item *ngFor="let note of notes">
+        <button ion-item *ngFor="let note of notes" (click)="goToNote(note)">
             <ion-avatar item-start>
                 <img src="{{note.image}}">
             </ion-avatar>

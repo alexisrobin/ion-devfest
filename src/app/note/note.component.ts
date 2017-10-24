@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 
+import { DevfestHttpService } from '../shared/devfest-http.service';
+
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { SocialSharing } from '@ionic-native/social-sharing';
@@ -13,6 +15,7 @@ import { DevfestDbService } from '../shared/devfest-db.service';
   templateUrl: 'note.component.html'
 })
 export class NoteComponent implements OnInit {
+  creatingState: boolean = true;Ò
   session: any = null;
   comment: string = "";
   image: any = "../assets/no-image.png";
@@ -25,6 +28,7 @@ export class NoteComponent implements OnInit {
 
   constructor(private nav: NavController,
               private navParams: NavParams,
+              private devfestHttpService: DevfestHttpService,
               private camera: Camera,
               private dfDbService: DevfestDbService,
               private toastCtrl: ToastController,
@@ -33,7 +37,28 @@ export class NoteComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.session = this.navParams.get('session');
+    let sessionId = this.navParams.get('sessionId');
+    if(sessionId == null) {
+        let note = this.navParams.get('note');
+        if(!!note) {
+            this.creatingState = false;
+            this.image = note.image;
+            this.comment = note.comment;
+            sessionId = note.sessionId;
+        }
+    }
+
+    this.devfestHttpService.getSessions()
+        .then((response) => {
+            if (!response.ok) throw Error(response.statusText);
+            return response.json();
+        })
+        .then((json) => {
+            this.session = json[sessionId];             
+        })
+        .catch((error) => {
+            console.log(error);
+        });
   }
 
   takeAPhoto() {

@@ -35,7 +35,7 @@ export class SessionDetailComponent implements OnInit {
     }
 
     goToNote(){
-        this.nav.push(NoteComponent, {session: this.session});
+        this.nav.push(NoteComponent, {sessionId: this.session.id});
     }
 
 }
