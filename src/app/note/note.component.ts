@@ -12,9 +12,9 @@ import { DevfestDbService } from '../shared/devfest-db.service';
 export class NoteComponent implements OnInit {
   session: any = null;
   comment: string = "";
-  image: any = "../assets/default-img.gif";
+  image: any = "../assets/no-image.png";
   options: CameraOptions = {
-    quality: 50,
+    quality: 20,
     destinationType: this.camera.DestinationType.DATA_URL,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE
@@ -31,12 +31,21 @@ export class NoteComponent implements OnInit {
     this.session = this.navParams.get('session');
   }
 
-  getPicture() {
+  takeAPhoto() {
+      this.options.sourceType = this.camera.PictureSourceType.CAMERA;
       this.camera.getPicture(this.options).then((imageData) => {    
           this.image = 'data:image/jpeg;base64,' + imageData;
           console.log(this.image);
       }, (e) => console.log(e));
   }
+
+  getPictureFromGallery() {
+    this.options.sourceType = this.camera.PictureSourceType.PHOTOLIBRARY;    
+    this.camera.getPicture(this.options).then((imageData) => {    
+        this.image = 'data:image/jpeg;base64,' + imageData;
+        console.log(this.image);
+    }, (e) => console.log(e));
+  } 
 
   save(comment) {
     this.dfDbService.addNote(this.session.id, this.comment, this.image);
