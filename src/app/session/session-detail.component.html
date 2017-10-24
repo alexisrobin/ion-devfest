@@ -13,5 +13,9 @@
     <p padding>
       {{session?.description}}
     </p>
-    <button ion-button full (click)="goToNote()">Mes notes</button>
+    <ion-fab right bottom>
+        <button ion-fab color="primary" (click)="goToNote()">
+            <ion-icon name="create"></ion-icon>
+        </button>
+    </ion-fab>
 </ion-content>

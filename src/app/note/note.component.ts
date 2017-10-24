@@ -3,6 +3,9 @@ import { NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { SocialSharing } from '@ionic-native/social-sharing';
+
+import { ActionSheetController } from 'ionic-angular'
 
 import { DevfestDbService } from '../shared/devfest-db.service';
 
@@ -24,7 +27,9 @@ export class NoteComponent implements OnInit {
               private navParams: NavParams,
               private camera: Camera,
               private dfDbService: DevfestDbService,
-              private toastCtrl: ToastController) { 
+              private toastCtrl: ToastController,
+              private actionSheetCtrl: ActionSheetController,
+              private socialSharing: SocialSharing) { 
   }
 
   ngOnInit() {
@@ -55,6 +60,36 @@ export class NoteComponent implements OnInit {
     });
     toast.present();
     this.nav.pop();
+  }
+
+  actionSheetOnImage() {
+    const actionSheet = this.actionSheetCtrl.create({
+      title: 'Picture',
+      buttons: [
+        {
+          text: 'Share',
+          handler: () => {
+            // Share via email
+            this.socialSharing.share(this.comment, this.session.title, this.image, null).then(() => {
+              let toast = this.toastCtrl.create({
+                message: 'Note shared.',
+                duration: 3000
+              });
+              toast.present();
+            });
+            console.log('Destructive clicked');
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 
 }

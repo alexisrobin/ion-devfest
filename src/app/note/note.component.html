@@ -23,7 +23,7 @@
           </button>
     </ion-row>
     <ion-row justify-content-center>
-        <img center width="300" src="{{image}}">  
+        <img center width="300" src="{{image}}" (click)="actionSheetOnImage()">  
     </ion-row>
     <ion-row>
         <ion-textarea placeholder="Enter a note" type="text" [(ngModel)]="comment"></ion-textarea>

@@ -15,4 +15,13 @@ export class DevfestHttpService {
             }
         });
     }
+
+    getSpeakers(): Promise<Response> {
+        return window.fetch(this.BASE_URL + "speakers.json", {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"            
+            }
+        });
+    }
 }

@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomeModule } from './home/home.module';
 import { SessionModule } from './session/session.module';
+import { SpeakerModule } from './speaker/speaker.module';
 import { DevfestHttpService } from './shared/devfest-http.service';
 import { DevfestDbService } from './shared/devfest-db.service';
 
@@ -22,7 +23,8 @@ import { DevfestDbService } from './shared/devfest-db.service';
     IonicStorageModule.forRoot(),    
     IonicModule.forRoot(MyApp),
     HomeModule,
-    SessionModule
+    SessionModule,
+    SpeakerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

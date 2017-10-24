@@ -38,5 +38,4 @@ export class SessionDetailComponent implements OnInit {
         this.nav.push(NoteComponent, {session: this.session});
     }
 
-
 }
