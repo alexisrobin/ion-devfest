@@ -5,6 +5,7 @@ import { NavController } from 'ionic-angular';
 import { SessionListComponent } from '../session/session-list.component';
 import { SpeakerListComponent } from '../speaker/speaker-list.component';
 import { NoteListComponent } from '../note/note-list.component';
+import { ScheduleComponent } from '../schedule/schedule.component';
 
 @Component({
   selector: 'app-home',
@@ -31,5 +32,9 @@ export class HomeComponent implements OnInit {
 
   goToNoteList() {
     this.nav.push(NoteListComponent);    
+  }
+
+  goToSchedule() {
+    this.nav.push(ScheduleComponent);    
   }
 }

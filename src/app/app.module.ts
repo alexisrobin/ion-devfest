@@ -10,6 +10,7 @@ import { MyApp } from './app.component';
 import { HomeModule } from './home/home.module';
 import { SessionModule } from './session/session.module';
 import { SpeakerModule } from './speaker/speaker.module';
+import { ScheduleModule } from './schedule/schedule.module';
 import { DevfestHttpService } from './shared/devfest-http.service';
 import { DevfestDbService } from './shared/devfest-db.service';
 
@@ -24,7 +25,8 @@ import { DevfestDbService } from './shared/devfest-db.service';
     IonicModule.forRoot(MyApp),
     HomeModule,
     SessionModule,
-    SpeakerModule
+    SpeakerModule,
+    ScheduleModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

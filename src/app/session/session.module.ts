@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from 'ionic-angular';
 import { SessionListComponent } from './session-list.component';
 import { SessionDetailComponent } from './session-detail.component';
+import { SessionBookmarkComponent } from './session-bookmark.component';
 
 import { NoteModule } from '../note/note.module';
 
@@ -12,8 +13,8 @@ import { NoteModule } from '../note/note.module';
         IonicModule,
         NoteModule
     ],
-    exports: [SessionListComponent],
-    declarations: [SessionListComponent, SessionDetailComponent],
+    exports: [SessionListComponent, SessionBookmarkComponent],
+    declarations: [SessionListComponent, SessionDetailComponent, SessionBookmarkComponent],
     providers: [],
     entryComponents: [
         SessionDetailComponent,

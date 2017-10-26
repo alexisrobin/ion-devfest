@@ -24,4 +24,13 @@ export class DevfestHttpService {
             }
         });
     }
+
+    getSchedule(): Promise<Response> {
+        return window.fetch(this.BASE_URL + "schedule.json", {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"            
+            }
+        });
+    }
 }
