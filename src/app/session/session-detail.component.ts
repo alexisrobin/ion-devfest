@@ -5,6 +5,7 @@ import 'rxjs/add/operator/switchMap';
 import { DevfestHttpService } from '../shared/devfest-http.service';
 import { Nav, NavParams } from 'ionic-angular';
 
+import { SessionChatComponent } from './session-chat.component';
 import { NoteComponent } from '../note/note.component';
 
 @Component({
@@ -32,6 +33,10 @@ export class SessionDetailComponent implements OnInit {
             .catch((error) => {
                 console.log(error);
             });
+    }
+
+    goToChat(){
+        this.nav.push(SessionChatComponent, {session: this.session});
     }
 
     goToNote(){

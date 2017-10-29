@@ -6,6 +6,10 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { env } from '../env/env'
+
 import { MyApp } from './app.component';
 import { HomeModule } from './home/home.module';
 import { SessionModule } from './session/session.module';
@@ -26,7 +30,9 @@ import { DevfestDbService } from './shared/devfest-db.service';
     HomeModule,
     SessionModule,
     SpeakerModule,
-    ScheduleModule
+    ScheduleModule,
+    AngularFireModule.initializeApp(env.firebase),   
+    AngularFireDatabaseModule     
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -93,4 +93,5 @@
     <plugin name="cordova-plugin-camera" spec="^2.4.1" />
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.2.1" />
     <plugin name="cordova-sqlite-storage" spec="^2.0.4" />
+    <allow-navigation href="http://192.168.1.17:8100" />
 </widget>
