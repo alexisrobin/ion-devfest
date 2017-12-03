@@ -1,0 +1,22 @@
+<ion-header>
+        <ion-navbar>
+          <button ion-button icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      
+          <ion-title>
+            Speakers
+          </ion-title>
+        </ion-navbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <button ion-item *ngFor="let speaker of speakers" (click)="goToSpeaker(speaker.id)">
+                <ion-avatar item-start>
+                    <img src="https://devfest.gdgnantes.com/{{speaker.photoUrl}}">
+                </ion-avatar>
+              <h1>{{ speaker.name }}</h1>
+              {{speaker.company}}
+            </button>
+        </ion-list>
+    </ion-content>

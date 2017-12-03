@@ -1,0 +1,32 @@
+
+<ion-header>
+    
+      <ion-navbar>
+        <button ion-button icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    
+        <ion-title>
+          {{session?.title}}
+        </ion-title>
+      </ion-navbar>
+    
+    </ion-header>
+    <ion-content padding>
+      <div *ngFor="let message of messages | async">
+            ({{message.name}})
+            <h3>{{message.content}}</h3>
+      </div>
+    </ion-content>
+    <ion-footer>
+        <ion-item>
+            <ion-label>
+                Name:
+            </ion-label>
+            <ion-input type="text" [(ngModel)]="name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-textarea type="text" [(ngModel)]="message" placeholder="Your message.."></ion-textarea>
+        </ion-item>
+        <button ion-button full (click)="sendMessage()">Send</button>
+    </ion-footer>

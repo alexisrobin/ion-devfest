@@ -1,0 +1,21 @@
+<ion-header>
+        <ion-navbar>
+          <button ion-button icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+          <ion-title>
+            {{speaker?.name}}
+          </ion-title>
+        </ion-navbar>
+    </ion-header>
+    <ion-content>
+        <img style="max-width: 100%;" *ngIf="!!speaker && !!speaker.photoUrl" src="https://devfest.gdgnantes.com/{{speaker.photoUrl}}">    
+        <p padding>
+          {{speaker?.bio}}
+        </p>
+        <ion-fab right bottom>
+            <button ion-fab color="primary" (click)="addToContact()">
+                <ion-icon name="person-add"></ion-icon>
+            </button>
+        </ion-fab>
+    </ion-content>

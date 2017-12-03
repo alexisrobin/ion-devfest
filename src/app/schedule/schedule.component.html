@@ -1,0 +1,37 @@
+<ion-header>
+        <ion-navbar>
+          <button ion-button icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      
+          <ion-title>
+            Schedule
+          </ion-title>
+        </ion-navbar>
+        <ion-toolbar *ngIf="!!schedule">
+            <ion-segment [(ngModel)]="idxDate">
+                <ion-segment-button *ngFor="let day of schedule; let idx = index"  value="{{idx}}">
+                    {{day.dateReadable}}
+                </ion-segment-button>
+            </ion-segment>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content *ngIf="!!schedule && !!sessions">
+        <div>
+            <ion-card *ngFor="let timeslot of schedule[idxDate].timeslots">
+                <ion-card-header>
+                    {{timeslot.startTime}} - {{timeslot.endTime}}
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-list>
+                        <ion-item no-lines *ngFor="let sessionId of timeslot.sessions">
+                            <session-bookmark [id]="sessionId"></session-bookmark>
+                            <button (click)="goToSession(sessionId)">
+                                {{ sessions[sessionId].title }}
+                            </button>
+                        </ion-item>
+                    </ion-list>
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </ion-content>
